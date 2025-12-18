@@ -20,7 +20,7 @@ public class User {
     private String password;
 
     @OneToMany(mappedBy = "users")
-    private List<Manga> mangas;
+    private List<CollectionItem> collectionItems;
 
     @Override
     public String toString() {
@@ -49,6 +49,15 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+
+    public List<CollectionItem> getCollectionItems() {
+        return collectionItems;
+    }
+
+    public void setCollectionItems(List<CollectionItem> collectionItems) {
+        this.collectionItems = collectionItems;
     }
 
     public void setId(Long id) {

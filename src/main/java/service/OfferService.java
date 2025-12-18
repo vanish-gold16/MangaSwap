@@ -2,6 +2,7 @@ package service;
 
 import entity.Offer;
 import entity.User;
+import org.hibernate.Session;
 
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
@@ -10,6 +11,8 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class OfferService {
+
+    private TradeService tradeService = new TradeService();
 
     private final Lock lock = new ReentrantLock();
     private final Condition senderCondition = lock.newCondition();
@@ -21,11 +24,11 @@ public class OfferService {
 
     public void sendNewOffer(Offer userOffer, User sender, User receiver) throws InterruptedException {
         if(lock.tryLock(2, TimeUnit.SECONDS)){
-            offer
+
         }
     }
 
-    public void recieveOffers() throws InterruptedException {
+    public void recieveOffers(Session session) throws InterruptedException {
 
         boolean isLocked = false;
         boolean acceptOffer = false;
@@ -53,7 +56,7 @@ public class OfferService {
             }
 
             if(acceptOffer){
-
+                tradeService.startTrade(session, );
             }
 
         } finally{
