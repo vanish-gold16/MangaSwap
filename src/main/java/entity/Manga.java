@@ -16,10 +16,8 @@ public class Manga {
     @Column(name = "author")
     private String author;
 
-
     @OneToOne(mappedBy = "mangas", cascade =  CascadeType.ALL)
     private CollectionItem item;
-
 
     public CollectionItem getItem() {
         return item;
