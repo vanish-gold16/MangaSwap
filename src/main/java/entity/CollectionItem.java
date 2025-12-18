@@ -10,9 +10,6 @@ public class CollectionItem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "manga_id")
-    private int mangaID;
-
     @Column(name = "for_trade")
     private boolean forTrade;
 
@@ -22,6 +19,10 @@ public class CollectionItem {
 
     @Column(name = "price")
     private int price;
+
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = "owner_id")
+    private User user;
 
     public int getPrice() {
         return price;
@@ -45,14 +46,6 @@ public class CollectionItem {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getMangaID() {
-        return mangaID;
-    }
-
-    public void setMangaID(int mangaID) {
-        this.mangaID = mangaID;
     }
 
     public boolean isForTrade() {

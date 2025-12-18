@@ -18,7 +18,7 @@ public class UserDAO {
         return (User) session.createQuery("SELECT user " +
                 "FROM User user " +
                 "WHERE user.username = :name").
-                setParameter("name", username).uniqueResult();
+                setParameter("name", username).list();
     }
 
 }
