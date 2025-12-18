@@ -51,7 +51,6 @@ public class User {
         this.password = password;
     }
 
-
     public List<CollectionItem> getCollectionItems() {
         return collectionItems;
     }
