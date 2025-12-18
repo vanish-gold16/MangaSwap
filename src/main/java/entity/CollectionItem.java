@@ -20,6 +20,17 @@ public class CollectionItem {
     @JoinColumn(name = "manga_id")
     private Manga manga;
 
+    @Column(name = "price")
+    private int price;
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
     public Manga getManga() {
         return manga;
     }

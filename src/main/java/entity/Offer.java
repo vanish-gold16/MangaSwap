@@ -25,8 +25,8 @@ public class Offer {
     @JoinColumn(name = "to_user_id")
     private User toUser;
 
-    @Column(name = "offer_status")
-    private boolean offerStatus;
+    @Enumerated(EnumType.STRING)
+    private OfferStatus offerStatus;
 
     public void setId(Long id) {
         this.id = id;
