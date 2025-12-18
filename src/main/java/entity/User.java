@@ -2,6 +2,7 @@ package entity;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @Entity
 @Table(name = "users")
@@ -29,12 +30,23 @@ public class User {
     @Column(name = "password")
     private String password;
 
+    @Column(name = "balance")
+    private AtomicInteger ballance;
+
     @OneToMany(mappedBy = "users")
     private List<CollectionItem> collectionItems;
 
     @Override
     public String toString() {
         return name + " - " + username;
+    }
+
+    public AtomicInteger getBallance() {
+        return ballance;
+    }
+
+    public void setBallance(AtomicInteger ballance) {
+        this.ballance = ballance;
     }
 
     public String getName() {

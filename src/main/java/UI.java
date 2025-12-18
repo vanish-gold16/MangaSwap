@@ -18,18 +18,18 @@ public class UI {
     private UserDAO userDAO = new UserDAO();
     private CollectionItemDAO collectionItemDAO = new CollectionItemDAO();
 
-    public void startApp(){
+    public void startApp() throws InterruptedException {
 
         List<CollectionItem> tradeItems = new ArrayList<>();
 
-        collectionItemDAO.findByID(session, )
-        tradeItems.add()
+        CollectionItem item1 = collectionItemDAO.findByID(session, 1)
+        tradeItems.add(item1);
 
         User seller = userDAO.findByID(session, 1);
         User buyer = userDAO.findByID(session, 2);
 
         TradeService tradeService = new TradeService();
-        tradeService.startTrade(session, buyer, seller);
+        tradeService.startTrade(session, buyer, seller, tradeItems.getFirst());
 
     }
 
