@@ -20,7 +20,7 @@ public class CollectionItem {
     @Column(name = "price")
     private int price;
 
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "owner_id")
     private User user;
 

@@ -12,7 +12,7 @@ public class CollectionItemDAO {
     }
 
     public List<CollectionItem> findTradableItemsByUser(Session session, int userID){
-        return (List<CollectionItem>) session.createQuery("SELECT item" +
+        return (List<CollectionItem>) session.createQuery("SELECT item " +
                 "FROM CollectionItem item " +
                 "WHERE item.user.id = :uid " +
                 "AND item.forTrade = true").
