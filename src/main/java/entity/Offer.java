@@ -1,6 +1,7 @@
 package entity;
 
 import javax.persistence.*;
+import enums.OfferStatus;
 
 @Entity
 @Table(name = "offers")

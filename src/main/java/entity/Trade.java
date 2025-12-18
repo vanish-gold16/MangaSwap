@@ -20,6 +20,7 @@ public class Trade {
     private User seller;
 
     @OneToOne(mappedBy = "trades", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "collection_item")
     private CollectionItem collectionItem;
 
     @Column(name = "executed_at")
