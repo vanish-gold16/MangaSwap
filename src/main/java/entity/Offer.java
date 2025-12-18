@@ -1,4 +1,4 @@
-package Entity;
+package entity;
 
 import javax.persistence.*;
 
@@ -10,18 +10,20 @@ public class Offer {
     private Long id;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "")
-    private
+    @JoinColumn(name = "item_id")
+    private CollectionItem collectionItem;
 
-    @OneToOne(mappedBy = "mangas", cascade = CascadeType.ALL)
+    @OneToOne()
+    @JoinColumn(name = "manga_id")
     private Manga manga;
 
-    @Column(name = "from_user_id")
+    @ManyToOne
+    @JoinColumn(name = "from_user_id")
     private User fromUser;
 
-    @Column(name = "to_user_id")
+    @ManyToOne
+    @JoinColumn(name = "to_user_id")
     private User toUser;
-
 
     public void setId(Long id) {
         this.id = id;
