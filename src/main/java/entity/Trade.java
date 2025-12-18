@@ -2,22 +2,22 @@ package entity;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Entity
 @Table(name = "trades")
 public class Trade {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "buyer_id")
-    private User buyerID;
+    private User buyer;
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "seller_id")
-    private User sellerID;
+    private User seller;
 
     @OneToOne(mappedBy = "trades", cascade = CascadeType.ALL, orphanRemoval = true)
     private CollectionItem collectionItem;
@@ -25,20 +25,34 @@ public class Trade {
     @Column(name = "executed_at")
     private LocalDateTime executedAt;
 
-    public User getBuyerID() {
-        return buyerID;
+    public Trade() {
     }
 
-    public void setBuyerID(User buyerID) {
-        this.buyerID = buyerID;
+    public Trade(User buyer, User seller, CollectionItem collectionItem, LocalDateTime executedAt) {
+        this.buyer = buyer;
+        this.seller = seller;
+        this.collectionItem = collectionItem;
+        this.executedAt = executedAt;
     }
 
-    public User getSellerID() {
-        return sellerID;
+    private void extracted() {
+        this.id = id;
     }
 
-    public void setSellerID(User sellerID) {
-        this.sellerID = sellerID;
+    public User getBuyer() {
+        return buyer;
+    }
+
+    public void setBuyer(User buyerID) {
+        this.buyer = buyerID;
+    }
+
+    public User getSeller() {
+        return seller;
+    }
+
+    public void setSeller(User seller) {
+        this.seller = seller;
     }
 
     public CollectionItem getCollectionItem() {

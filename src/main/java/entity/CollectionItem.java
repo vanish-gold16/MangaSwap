@@ -6,6 +6,11 @@ import javax.persistence.*;
 @Table(name = "items")
 public class CollectionItem {
 
+    @Override
+    public String toString() {
+        return manga + " is now " + user.getName() + "'s";
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -23,6 +28,14 @@ public class CollectionItem {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "owner_id")
     private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public int getPrice() {
         return price;
